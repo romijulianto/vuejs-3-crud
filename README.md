@@ -1,8 +1,11 @@
-# vue-3-crud
+# Build CRUD Application with VueJS 3
 
-## Project setup
+## Setup and Depedencies
 ```
-npm install
+- vue create vue-3-crud
+- cd vue-3-crud
+- npm install bootstrap@4.6.0 jquery popper.js
+- 
 ```
 
 ### Compiles and hot-reloads for development
