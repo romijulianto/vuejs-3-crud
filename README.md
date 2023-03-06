@@ -5,7 +5,8 @@
 - vue create vue-3-crud
 - cd vue-3-crud
 - npm install bootstrap@4.6.0 jquery popper.js
-- npm install vue-router@4c
+- npm install vue-router@4
+- npm install axios
 - 
 ```
 
