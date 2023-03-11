@@ -32,7 +32,32 @@
                 </li>
             </ul>
 
-            
+            <button
+            class="m-3 btn btn-sm btn-danger"
+            @click="removeAllTutorials"
+            >Remove All</button>
+        </div>
+
+        <div class="col-md-6">
+            <div v-if="currentTutorial">
+            <h4>Tutorial</h4>
+            <div>
+                <label> <strong>Title:</strong></label> {{ currentTutorial.title }}
+            </div>
+            <div>
+                <label> <strong>Description:</strong></label> {{ currentTutorial.description }}
+            </div>
+            <div>
+                <label> <strong>Status:</strong></label> {{ currentTutorial.published ? "Published" : "Pending" }}
+            </div>
+
+            <router-link :to="`/tutorials/` + currentTutorial.id" class="badge badge-warning">Edit</router-link>
+            </div>
+
+            <div v-else>
+                <br />
+                <p>Please click on a Tutorial...</p>
+            </div>
         </div>
     </div>
 </template>
