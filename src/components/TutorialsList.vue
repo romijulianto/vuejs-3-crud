@@ -10,7 +10,8 @@
                 />
 
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button">
+                    <button class="btn btn-outline-secondary" type="button"
+                    @click="searcTitle">
                         Search
                     </button>
                 </div>
@@ -20,10 +21,18 @@
         <div class="col-md-6">
             <h4>Tutorials List</h4>
             <ul class="list-group">
-                <li class="list-group-item">
-                    
+                <li class="list-group-item"
+                :class="{ active: index == currentIndex }"
+                v-for="(tutorial, index) in tutorials"
+                :key="index"
+                @click="setActiveTutorial(tutorial, index)"
+                >
+                
+                {{  tutorial.title }}
                 </li>
             </ul>
+
+            
         </div>
     </div>
 </template>
@@ -43,24 +52,49 @@ export default {
     },
     methods: {
         retrieveTutorials() {
-
+            TutorialDataServices.getAll()
+            .then(response => {
+                this.tutorials = response.data;
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
         },
 
         resfreshList() {
-
+            this.retrieveTutorials();
+            this.currentTutorial = null;
+            this.currentIndex = -1;
         },
-        setActiveTutorial() {
 
+        setActiveTutorial(tutorial, index) {
+            this.currentTutorial = tutorial;
+            this.currentIndex = tutorial ? index : -1;
         },
 
         removeAllTutorials() {
-
+            TutorialDataServices.deleteAll()
+            .then(response => {
+                console.log(response.data);
+                this.resfreshList();
+            })
+            .catch(e => {
+                console.log(e);
+            });
         },
 
         searcTitle() {
-
+            TutorialDataServices.findByTitle(this.title)
+            .then(response => {
+                this.tutorials = response.data;
+                this.setActiveTutorial(null);
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
         },
-
         mounted() {
             this.retrieveTutorials();
         }
