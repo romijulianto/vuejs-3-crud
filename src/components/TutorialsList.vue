@@ -34,10 +34,36 @@ import TutorialDataServices from '@/services/TutorialDataServices';
 export default {
     name: "tutorials-list",
     data() {
-
+        return {
+            tutorials: [],
+            currentTutorial: null,
+            currentIndex: -1,
+            title: ""
+        };
     },
     methods: {
+        retrieveTutorials() {
 
+        },
+
+        resfreshList() {
+
+        },
+        setActiveTutorial() {
+
+        },
+
+        removeAllTutorials() {
+
+        },
+
+        searcTitle() {
+
+        },
+
+        mounted() {
+            this.retrieveTutorials();
+        }
     }
 };
 </script>
