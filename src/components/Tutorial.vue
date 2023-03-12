@@ -9,11 +9,26 @@ export default {
   name: "tutorial-data",
   data() {
     return {
-      cureentTutorial: null,
+      currentTutorial: null,
       message: ''
     };
   },
   methods: {
+    getTutorial() {
+
+    },
+
+    updatePublished() {
+
+    },
+
+    updateTutorial() {
+
+    },
+
+    deleteTutorial() {
+      
+    }
 
   },
 
